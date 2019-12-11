@@ -475,7 +475,10 @@ export default class Table extends React.PureComponent {
     });
 
     const onClick = event => {
-      onColumnClick && onColumnClick({columnData, dataKey, event});
+      // onColumnClick && onColumnClick({columnData, dataKey, event});
+      // https://github.com/bvaughn/react-virtualized/issues/1295
+      // Fixed to pass 'rowData' when clicked.
+      onColumnClick && onColumnClick({ rowData, rowIndex, dataKey, event });
     };
 
     const style = this._cachedColumnStyles[columnIndex];
